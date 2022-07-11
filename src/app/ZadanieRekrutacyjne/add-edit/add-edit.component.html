@@ -1,0 +1,35 @@
+<form>
+    <div class="mb-3">
+        <label for="imie" class="form-label">Imie</label>
+        <input type="text" class="form-control" [(ngModel)]="imie" name="imie">
+    </div>
+    <div class="mb-3">
+        <label for="nazwisko" class="form-label">Nazwisko</label>
+        <input type="text" class="form-control" [(ngModel)]="nazwisko" name="nazwisko">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" [(ngModel)]="email" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="idKategorii" class="form-label">Kategoria</label>
+        <input type="text" class="form-control" name="idKategorii" [(ngModel)]="idKategorii" *ngIf="osoba.id!=0" > 
+      <select class="form-control" name="idKategorii" id="idKategorii" [(ngModel)]="idKategorii" *ngIf="osoba.id==0">
+        <option *ngFor="let kategoria of ListaKategorie$|async" [value]="kategoria.id">{{kategoria.nazwaKategorii}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+        <label for="telefon" class="form-label">Telefon</label>
+        <input type="text" class="form-control" [(ngModel)]="telefon" name="telefon">
+    </div>
+    <div class="mb-3">
+        <label for="data" class="form-label">Data</label>
+        <input type="text" class="form-control" [(ngModel)]="data" name="data">
+    </div>
+    <button (click)="addNew()" *ngIf="osoba.id==0" class="btn btn-primary">
+        Dodaj osobę
+    </button>
+    <button (click)="updateN()" *ngIf="osoba.id!=0" class="btn btn-primary">
+        Aktualizuj
+    </button>
+</form>
